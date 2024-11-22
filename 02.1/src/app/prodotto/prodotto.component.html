@@ -1,0 +1,11 @@
+<div align = "center">
+    <div *ngIf="loading" class="">
+        loading...
+    </div>
+
+    <div *ngIf="!loading && foodData" class="">
+        <h1>{{foodData.name}}</h1>
+        <img [src]="foodData.image_uris.normal" alt="{{foodData.name}}">
+
+    </div>
+</div>
