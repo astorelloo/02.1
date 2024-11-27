@@ -4,8 +4,8 @@ import { ProdottoComponent } from './prodotto/prodotto.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '/food/:name', component: ProdottoComponent},
-  { path: '/', component: AppComponent, pathMatch: 'full' }
+  { path: 'food/:name', component: ProdottoComponent},
+  { path: '', component: AppComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
