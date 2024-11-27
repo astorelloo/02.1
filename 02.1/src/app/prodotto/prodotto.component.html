@@ -3,9 +3,14 @@
         loading...
     </div>
 
-    <div *ngIf="!loading && foodData" class="">
-        <h1>{{foodData.name}}</h1>
-        <img [src]="foodData.image_uris.normal" alt="{{foodData.name}}">
+    <div *ngIf="!loading && foodData.length > 0" class="">
+        <div *ngFor="let product of foodData">
+            <h1>{{product.product_name }}</h1>
+            <img *ngIf="product.image_url" [src]="product.image_url_uris.normal" alt="{{product.product_name}}">
 
+        </div>
+    </div>
+    <div *ngIf="!loading && foodData.length === 0">
+        <p>Nessun prodotto trovato</p>
     </div>
 </div>

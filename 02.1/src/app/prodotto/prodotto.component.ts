@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./prodotto.component.css']
 })
 export class ProdottoComponent  implements OnInit {
-  foodData: any;
+  foodData: any[] = [];
   loading = false;
   
   constructor(private route: ActivatedRoute, private http: HttpClient){}
@@ -23,9 +23,13 @@ export class ProdottoComponent  implements OnInit {
   fetchCardData(foodName: string): void {
     this.loading = true;
     const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page_size=2&json=true`;
-    this.http.get(url).subscribe(
+    this.http.get<any>(url).subscribe(
       (data)=> {
-        this.foodData = data;
+        if (data && data.products) {
+          this.foodData = data.products; // Assegna l'array di prodotti a foodData
+        } else {
+          this.foodData = []; // Se non ci sono prodotti, assicurati che foodData sia vuoto
+        }
         this.loading = false;
       },
       (error) => {

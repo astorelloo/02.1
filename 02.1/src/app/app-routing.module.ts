@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProdottoComponent } from './prodotto/prodotto.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: '/food/:name', component: ProdottoComponent},
+  { path: '/', component: AppComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
