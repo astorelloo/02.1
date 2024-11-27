@@ -1,3 +1,5 @@
+//https://transform.tools/json-to-typescript per cambiare  "https://world.openfoodfacts.org/cgi/search.pl?search_terms=pasta&page_size=2&json=true" per fare il models
+
 export interface ProductList {
     count: string
     page: string
