@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'food/:name', component: ProdottoComponent},
+  { path: 'food/detail/:name', component: ProdottoComponent},
   { path: '', component: AppComponent, pathMatch: 'full' }
 ];
 

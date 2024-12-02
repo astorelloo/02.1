@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductList } from '../models/product.model';
 
@@ -13,7 +13,7 @@ export class ProdottoComponent  implements OnInit {
   foodData!: Product[];
   loading = false;
   
-  constructor(private route: ActivatedRoute, private http: HttpClient){}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -27,7 +27,7 @@ export class ProdottoComponent  implements OnInit {
     this.http.get<any>(url).subscribe(
       (data: ProductList)=> {
         if (data && data.products) {
-          this.foodData = data.products; // Assegna l'array di prodotti a foodData
+          this.foodData = data.products; // Assegna i prodotti a foodData
         } else {
           this.foodData = []; // Se non ci sono prodotti, assicurati che foodData sia vuoto
         }
@@ -38,5 +38,23 @@ export class ProdottoComponent  implements OnInit {
         this.loading = false;
       }
     )
+  }
+  ricerca(productId: String): void{
+    const url = `https://world.openfoodfacts.org/api/v0/product/${productId}.json`;
+    
+    this.http.get<any>(url).subscribe(
+      (data) => {
+        if (data && data.product) {
+          // Qui puoi navigare verso una pagina di dettagli o visualizzare i dettagli
+          // Utilizzo di Router per navigare alla pagina dei dettagli, passando l'ID
+          this.router.navigate(['/product-details', productId]);
+        } else {
+          console.log('Dettagli non trovati per questo prodotto');
+        }
+      },
+      (error) => {
+        console.error('Errore nel recupero dei dettagli', error);
+      }
+    );
   }
 }

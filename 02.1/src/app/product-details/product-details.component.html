@@ -1,0 +1,7 @@
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="!loading && productDetails">
+  <h1>{{ productDetails.product_name }}</h1>
+  <img *ngIf="productDetails.image_url" [src]="productDetails.image_url" alt="{{ productDetails.product_name }}">
+  <p>{{ productDetails.description }}</p>
+  <p>Ingredienti: {{ productDetails.ingredients_text }}</p>
+</div>

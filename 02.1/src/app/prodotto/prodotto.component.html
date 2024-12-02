@@ -7,8 +7,7 @@
         <div *ngFor="let product of foodData">
             <h1>{{product.product_name }}</h1>
             <img *ngIf="product.image_url" [src]="product.image_url" alt="{{product.product_name}}">
-            <button id = "{{product._id}}" > apri pagina detytagliata </button> <!--abbiamo preso l'id e labbiamo messo nel botton-->
-
+            <button id = "{{product._id}}" (click)=" ricerca(product._id)"> apri pagina detytagliata </button>
         </div>
     </div>
     <div *ngIf="!loading && foodData.length === 0">
