@@ -4,7 +4,7 @@ import { SearchComponent } from './search/search.component';
 import { ItemComponent } from './item/item.component';
 
 const routes: Routes = [
-  { path: '', component: SearchComponent },
+  { path: '', component: SearchComponent }, //route di default
   { path: 'item/:id', component: ItemComponent }  // Parametro 'id' per il prodotto
 ];
 

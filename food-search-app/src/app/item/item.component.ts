@@ -14,7 +14,7 @@ export class ItemComponent implements OnInit {
     private route: ActivatedRoute,
     private foodService: FoodService
   ) {}
-
+//metodo on init che rende product = data importando cosi l'id
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
     if (productId) {

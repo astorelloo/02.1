@@ -11,7 +11,7 @@ export class SearchComponent {
   products: any[] = [];
 
   constructor(private foodService: FoodService) {}
-
+  //metodo on search per visualizzare seguendo il nome di quello che abbiamo cercato 
   onSearch() {
     if (this.searchTerm.length > 2) {
       this.foodService.searchProducts(this.searchTerm).subscribe(data => {
